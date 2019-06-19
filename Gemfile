@@ -8,6 +8,7 @@ gem 'rails', '~> 5.2.3'
 gem 'rufo'
 gem 'minitest-reporters'
 gem 'bootstrap-sass', '3.3.7'
+gem 'rails-controller-testing'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 gem 'pg'
