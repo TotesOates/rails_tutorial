@@ -10,6 +10,7 @@ gem 'minitest-reporters'
 gem 'bootstrap-sass', '3.3.7'
 gem 'rails-controller-testing'
 gem 'bcrypt', '3.1.12'
+gem 'jquery-rails'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 gem 'pg'
