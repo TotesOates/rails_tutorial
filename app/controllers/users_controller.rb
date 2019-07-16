@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:edit, :update]
 
   # GET /users
   # GET /users.json
@@ -60,6 +61,13 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = "You do not have access, Please Log In"
+      redirect_to login_url
+    end
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_user
