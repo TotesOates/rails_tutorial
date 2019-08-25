@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:edit, :update]
+  before_action :set_user, only: %i[show edit update destroy]
+  before_action :logged_in_user, only: %i[edit update]
 
   # GET /users
   # GET /users.json
@@ -30,11 +32,11 @@ class UsersController < ApplicationController
 
     if @user.save
       log_in(@user)
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = 'Welcome to the Sample App!'
       redirect_to @user
     else
-      flash[:danger] = "Sorry, something messed up."
-      render "new"
+      flash[:danger] = 'Sorry, something messed up.'
+      render 'new'
     end
   end
 
@@ -42,7 +44,7 @@ class UsersController < ApplicationController
   def update
     set_user
 
-    if set_user.update_attributes(user_params) 
+    if set_user.update_attributes(user_params)
       flash[:success] = 'Profile Updated'
       redirect_to @user
     else
@@ -55,7 +57,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
+      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -64,7 +66,7 @@ class UsersController < ApplicationController
 
   def logged_in_user
     unless logged_in?
-      flash[:danger] = "You do not have access, Please Log In"
+      flash[:danger] = 'You do not have access, Please Log In'
       redirect_to login_url
     end
   end
